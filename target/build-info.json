@@ -1,0 +1,218 @@
+{
+  "version" : "1.0.1",
+  "name" : "supinfo-buildinfo-test",
+  "number" : "1",
+  "buildAgent" : {
+    "name" : "Maven",
+    "version" : "3.9.10"
+  },
+  "agent" : {
+    "name" : "/",
+    "version" : "3.9.10"
+  },
+  "started" : "2025-06-21T19:49:06.318+0800",
+  "durationMillis" : 259946,
+  "vcs" : [ ],
+  "modules" : [ {
+    "properties" : {
+      "maven.compiler.target" : "1.8",
+      "java.version" : "1.8",
+      "maven.compiler.source" : "1.8"
+    },
+    "type" : "maven",
+    "id" : "com.example.jfrog:app-boot:1.0.3",
+    "repository" : "liweitest-mvn-dev-virtual",
+    "artifacts" : [ {
+      "type" : "war",
+      "sha1" : "c80860bee13e51e96b93e53f49cba4282ed9bf5c",
+      "sha256" : "1c21481fd29eea997f88a542abebbc3456268d1daca09a287255efbc48b03822",
+      "md5" : "16186eef4fa407d2476afb7edc1d89da",
+      "name" : "app-boot-1.0.3.war",
+      "path" : "com/example/jfrog/app-boot/1.0.3/app-boot-1.0.3.war"
+    }, {
+      "type" : "pom",
+      "sha1" : "a3732222ea2842551dfcb09bb303dcf0cd4dcf79",
+      "sha256" : "4fad5626a1ede234c850bb853cf292a5ba976dfae84183b75937eca3f3c01707",
+      "md5" : "a7d76b087c10888fd7c2b17ea75be045",
+      "name" : "app-boot-1.0.3.pom",
+      "path" : "com/example/jfrog/app-boot/1.0.3/app-boot-1.0.3.pom"
+    } ],
+    "dependencies" : [ {
+      "type" : "jar",
+      "sha1" : "e257b0562453f73eabac1bc3181ba33e79d193ed",
+      "sha256" : "f04ee9c0ac417471d9127b5880b96c3147249f20674a8dbb88e9949d855382a8",
+      "md5" : "862c00b2e854f9c0f1e8d8409d23d899",
+      "id" : "org.apache.logging.log4j:log4j-core:2.14.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "3f952e0282ae77ae59851d96bb18015e520b6208",
+      "sha256" : "e116f32edcb77067289a3148143f2c0c97b27cf9a1342f8108ee37dec4868861",
+      "md5" : "63826e38e44f08e7935c1d173667ed8c",
+      "id" : "org.apache.maven.wagon:wagon-provider-api:1.0-beta-6",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-artifact-manager:2.2.0", "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "fef3f5533f461206dcbfe0acbe3d9b9ad2f6559e",
+      "sha256" : "26a78300a7c844cd15d1405e5d18a7623b3f296ba9de1ecaa39475defa39611f",
+      "md5" : "6ea95f3932ca2dafa0c279b067ffbdb0",
+      "id" : "org.apache.maven:maven-profile:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "1ca964122c53f03f6fc3938b58c16d63b40490ab",
+      "sha256" : "12e6fe4809aa0be98bd2c88ca87dccefd6d1e612cbee8abe242a733f26d6b1f5",
+      "md5" : "9ddcafd455a3762046c5e72ee7d347b8",
+      "id" : "com.alibaba:fastjson:1.2.31",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "92d9123f026bec30a0b00b6f2d625e30485a6160",
+      "sha256" : "ee521e5d990da65ba2d4fc5ebd082323007c48d16dd67960dcbb84384bb3ac3f",
+      "md5" : "9c02ea2acca9fabc06e65c0d943804d9",
+      "id" : "org.apache.maven:maven-settings:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "5e79c7ad90bde58e38db5f84f31e7563824dca0b",
+      "sha256" : "69f1b54f7ed903524a4fdfa499184d0b468db089a61275127987fc8bd982948c",
+      "md5" : "bbca0411736f3ed4bac4d26a938a8726",
+      "id" : "org.apache.maven:maven-artifact-manager:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "feef4d37093f334f8f6226100f9055e969ebca66",
+      "sha256" : "c14c3872027a5d4c1995026e2bdb4e45c9e8eb511a46e7d6c7f9e670c8e4b433",
+      "md5" : "c1ab1cc077d9782455fc5ff09aadd04b",
+      "id" : "net.ju-n.maven.plugins:checksum-maven-plugin:1.2",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "5e643ef4b5f5dc2c8c78f1914273b73139b376a1",
+      "sha256" : "90975aff5c1f61ad12c864830e55d48e2951d5c83b206577f723e5f0d49884f6",
+      "md5" : "fbffc85d13f123264c0dd83778f50f89",
+      "id" : "org.apache.maven:maven-plugin-api:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "23cdb2c6babad9b2b0dcf47c6a2c29d504e4c7a8",
+      "sha256" : "9791ac85aa3cdad633e512192766f84995eddf4db188cc42facec52a0dae15e8",
+      "md5" : "4876a0d414b3c2a01c10b6e96d70b62d",
+      "id" : "org.apache.logging.log4j:log4j-api:2.14.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.logging.log4j:log4j-core:2.14.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "797f485c9cd04124687ba62de4fb59018d1f21e3",
+      "sha256" : "4f43deaf882d9da528b8746e27256ea3269c739da51a349732a3e7314c9d49ca",
+      "md5" : "507d8d1532701698efdd80e1be7e1f3d",
+      "id" : "io.github.andr3colonel:jfrog_dummy:1.0.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "05adf2e681c57d7f48038b602f3ca2254ee82d47",
+      "sha256" : "2bf4e59f3acd106fea6145a9a88fe8956509f8b9c0fdd11eb96fee757269e3f3",
+      "md5" : "82cacb7d9724c4a4e4d20f004884d4da",
+      "id" : "classworlds:classworlds:1.1-alpha-2",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1", "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "99129f16442844f6a4a11ae22fbbee40b14d774f",
+      "sha256" : "b58e459509e190bed737f3592bc1950485322846cf10e78ded1d065153012d70",
+      "md5" : "1f40fb782a4f2cf78f161d32670f7a3a",
+      "id" : "junit:junit:3.8.1",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1", "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "6547506d8a66c82b5e37e3f5dc9dc9d2488b7ba0",
+      "sha256" : "f32c1b2b26d02606682c27b7f6f8ac1a364d1c950c3fd980bce93602fbec3ff3",
+      "md5" : "822cc892190c686fcee04d7d52fb9fdf",
+      "id" : "org.apache.maven:maven-project:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "7e8fe33e6b0d5cfffec39d6ddcf17f3f05ace770",
+      "sha256" : "7a84c4ff193b594a19afe5440ea7b832ef7f6e0c30b63f0b253f4f1030127118",
+      "md5" : "3c9cedd9061a9ca923e760edbd8b9370",
+      "id" : "org.codehaus.plexus:plexus-utils:3.0.2",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "d454c4fb2bc28a89344da243ad6e90006c620a54",
+      "sha256" : "164c158f3e45d4ea2355482669c0adfddc24878e21671dfc6788622c6a71588d",
+      "md5" : "26c8dec023c2bf7e606594835f44199d",
+      "id" : "org.apache.maven:maven-model:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "a891b12d4bdbf6b80f2d056418daf1951e0d04a8",
+      "sha256" : "e60996bcde88cf4175311234a06f67089504b5d79b0a0055853b8fced1acd51f",
+      "md5" : "cdfc2ed834d936075581bd3603ef8404",
+      "id" : "org.apache.maven:maven-plugin-registry:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "a10f8a171f02973496fbfe137e781a7ab1dd16dd",
+      "sha256" : "4e06dbe4f248069a9c0c6be0515e80a604406630b607785e0941f4e422b7a85b",
+      "md5" : "ca08a8460783a44178ddb67993b0e91a",
+      "id" : "org.apache.maven:maven-repository-metadata:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-artifact-manager:2.2.0", "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "ad9dddff6043194904ad1d2c00ff1d003c3915f7",
+      "sha256" : "fd9507feb858fa620d1b4aa4b7039fdea1a77e09d3fd28cfbddfff468d9d8c28",
+      "md5" : "d5ef768cef9a261d569ff1f672324154",
+      "id" : "org.codehaus.plexus:plexus-interpolation:1.11",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "9ab8afcc2842d5ef06eb775a0a2b12783b99aa80",
+      "sha256" : "8748f0ec73895f7f18c1a9c13cf754fddddf0451cf472463ef02f93c3e7a7de7",
+      "md5" : "b202b2dde200e0d1b714f6e867e29ee4",
+      "id" : "org.bouncycastle:bcprov-jdk15on:1.51",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "5351da1ace8b470f36103b665f0a321305b1b412",
+      "sha256" : "e8c875ba960481d651090ded2e95e52d202e273b67fa9961c72a802d8f321f0a",
+      "md5" : "80f8d910b282658fed7c647013d4c3b7",
+      "id" : "org.apache.maven:maven-artifact:2.2.0",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "682f7ac17fed79e92f8e87d8455192b63376347b",
+      "sha256" : "f5759b7fcdfc83a525a036deedcbd32e5b536b625ebc282426f16ca137eb5902",
+      "md5" : "748bb0cbf4780b2e3121dc9c12e10cd9",
+      "id" : "backport-util-concurrent:backport-util-concurrent:3.1",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-artifact-manager:2.2.0", "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    }, {
+      "type" : "jar",
+      "sha1" : "94aea3010e250a334d9dab7f591114cd6c767458",
+      "sha256" : "7c758612888782ccfe376823aee7cdcc7e0cdafb097f7ef50295a0b0c3a16edf",
+      "md5" : "99533a9d3e0fa3280cd0bd3426c5f99b",
+      "id" : "org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1",
+      "scopes" : [ "compile" ],
+      "requestedBy" : [ [ "org.apache.maven:maven-project:2.2.0", "net.ju-n.maven.plugins:checksum-maven-plugin:1.2", "io.github.andr3colonel:jfrog_dummy:1.0.0", "com.example.jfrog:app-boot:1.0.3" ] ]
+    } ]
+  } ]
+}
