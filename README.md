@@ -1,6 +1,6 @@
 # Maven-demo
 
-## Prerequisites for Mac Users-ad
+## Prerequisites for Mac Users-add
 Install Maven 3 and JFrog CLI
 ```sh
 # Install Maven 3
