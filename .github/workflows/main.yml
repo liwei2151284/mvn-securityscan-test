@@ -1,10 +1,10 @@
 name: "Supinfo Build Scan"
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  #push:
+    #branches: [ "main" ]
+  #pull_request:
+    #branches: [ "main" ]
   schedule:
     - cron: '42 11 * * 1'
 
@@ -12,6 +12,7 @@ env:
   JF_URL: ${{ secrets.JF_URL }}
   JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
   JFrog_Mvn_Repo: "demo-mvn-virtual"
+  Build_name: "supinfo-build-info-check"
   
 jobs:
   security-java-demo:
@@ -38,11 +39,11 @@ jobs:
       run: |
         jf rt ping
         jf  mvnc --repo-resolve-releases=$JFrog_Mvn_Repo --repo-resolve-snapshots=$JFrog_Mvn_Repo --repo-deploy-releases=$JFrog_Mvn_Repo --repo-deploy-snapshots=$JFrog_Mvn_Repo
-        jf  mvn clean install --build-name=$GITHUB_JOB  --build-number=$GITHUB_RUN_NUMBER
+        jf  mvn clean install --build-name=$Build_name  --build-number=$GITHUB_RUN_NUMBER
        
     - name: Publish Build-Info to Supinfo Repo
       run: |
-        jf rt bce $GITHUB_JOB $GITHUB_RUN_NUMBER 
-        jf rt bag $GITHUB_JOB $GITHUB_RUN_NUMBER 
-        jf rt bp $GITHUB_JOB $GITHUB_RUN_NUMBER 
+        jf rt bce $Build_name $GITHUB_RUN_NUMBER 
+        jf rt bag $Build_name $GITHUB_RUN_NUMBER 
+        jf rt bp $Build_name $GITHUB_RUN_NUMBER 
   
