@@ -1,0 +1,48 @@
+name: "Supinfo Build Scan"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '42 11 * * 1'
+
+env:
+  JF_URL: ${{ secrets.JF_URL }}
+  JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+  JFrog_Mvn_Repo: "demo-mvn-virtual"
+  
+jobs:
+  security-java-demo:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+
+    - name: Install and configure Supinfo CLI
+      run: |
+        npm install -g jfrog-cli-v2-jf
+        echo $JF_TOKEN | jf c add demo --interactive=false --url=$JF_URL --access-token-stdin
+        jf config use demo
+
+    - name: Build Maven Project
+      run: |
+        jf rt ping
+        jf  mvnc --repo-resolve-releases=$JFrog_Mvn_Repo --repo-resolve-snapshots=$JFrog_Mvn_Repo --repo-deploy-releases=$JFrog_Mvn_Repo --repo-deploy-snapshots=$JFrog_Mvn_Repo
+        jf  mvn clean install --build-name=$GITHUB_JOB  --build-number=$GITHUB_RUN_NUMBER
+       
+    - name: Publish Build-Info to Supinfo Repo
+      run: |
+        jf rt bce $GITHUB_JOB $GITHUB_RUN_NUMBER 
+        jf rt bag $GITHUB_JOB $GITHUB_RUN_NUMBER 
+        jf rt bp $GITHUB_JOB $GITHUB_RUN_NUMBER 
+  
