@@ -20,6 +20,7 @@ Set the `maven-local` as the default deployment repository.
 
 Your Maven builds and resolutions will typically point to `maven-virtual`.
 
+
 ## Step-by-Step Instructions
 ### Configure Artifactory (JFrog CLI config)
 ```bash
