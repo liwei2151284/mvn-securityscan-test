@@ -31,10 +31,10 @@ jobs:
         JF_URL: ${{ vars.JF_URL }}
         JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 
-    - name: Configure Supinfo CLI
-      run: |
-        echo $JF_TOKEN | jf c add demo --interactive=false --url=$JF_URL --access-token-stdin
-        jf config use demo
+    #- name: Configure Supinfo CLI
+    #  run: |
+    #    echo $JF_TOKEN | jf c add demo --interactive=false --url=$JF_URL --access-token-stdin
+    #    jf config use demo
 
     - name: Build Maven Project
       run: |
