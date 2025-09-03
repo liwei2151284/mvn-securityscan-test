@@ -10,8 +10,6 @@ on:
     - cron: '42 11 * * 1'
 
 env:
-  JF_URL: ${{ secrets.JF_URL }}
-  JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
   JFrog_Mvn_Repo: "demo-mvn-virtual"
   Build_name: "github-mvn-build"
   
@@ -29,6 +27,9 @@ jobs:
 
     - name: Setup JFrog CLI
       uses: jfrog/setup-jfrog-cli@v4
+      env:
+        JF_URL: ${{ vars.JF_URL }}
+        JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 
     - name: Configure Supinfo CLI
       run: |
