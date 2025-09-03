@@ -19,7 +19,8 @@ permissions:
   security-events: write
 jobs:
   create-fix-pull-requests:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    #runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
 
