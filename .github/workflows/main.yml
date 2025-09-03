@@ -27,12 +27,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Setup JFrog CLI
+      uses: jfrog/setup-jfrog-cli@v4
 
-    - name: Install and configure Supinfo CLI
+    - name: Configure Supinfo CLI
       run: |
-        npm install -g jfrog-cli-v2-jf
         echo $JF_TOKEN | jf c add demo --interactive=false --url=$JF_URL --access-token-stdin
         jf config use demo
 
