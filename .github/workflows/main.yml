@@ -13,7 +13,7 @@ env:
   JF_URL: ${{ secrets.JF_URL }}
   JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
   JFrog_Mvn_Repo: "demo-mvn-virtual"
-  Build_name: "supinfo-build-info-check"
+  Build_name: "github-mvn-build"
   
 jobs:
   security-java-demo:
