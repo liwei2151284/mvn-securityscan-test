@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: '42 11 * * 1'
 
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
 env:
   JFrog_Mvn_Repo: "demo-mvn-virtual"
   Build_name: "github-mvn-build"
@@ -17,24 +22,24 @@ jobs:
   security-java-demo:
     name: Build
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Setup JFrog CLI
       uses: jfrog/setup-jfrog-cli@v4
-      env:
-        JF_URL: ${{ vars.JF_URL }}
-        JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 
-    #- name: Configure Supinfo CLI
-    #  run: |
-    #    echo $JF_TOKEN | jf c add demo --interactive=false --url=$JF_URL --access-token-stdin
-    #    jf config use demo
+      env:
+        # JFrog Platform url
+        JF_URL: ${{ secrets.JF_URL }}
+        # JFrog Platform access token
+        JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+    
+        #- name: Configure Supinfo CLI
+        #  run: |
+        #    echo $JF_TOKEN | jf c add demo --interactive=false --url=$JF_URL --access-token-stdin
+        #    jf config use demo
 
     - name: Build Maven Project
       run: |
