@@ -1,0 +1,56 @@
+name: "Alex Build Scan"
+
+on:
+  push:
+    branches: [ "main" ]
+  #pull_request:
+    #branches: [ "main" ]
+  workflow_dispatch:
+  schedule:
+    - cron: '42 11 * * 1'
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+env:
+  JFrog_Mvn_Repo: "demo-mvn-virtual"
+  Build_name: "github-mvn-build"
+  
+jobs:
+  security-java-demo:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup JFrog CLI
+      uses: jfrog/setup-jfrog-cli@v4
+
+      env:
+        # JFrog Platform url
+        JF_URL: ${{ secrets.JF_URL }}
+        # JFrog Platform access token
+        JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+    
+        #- name: Configure Supinfo CLI
+        #  run: |
+        #    echo $JF_TOKEN | jf c add demo --interactive=false --url=$JF_URL --access-token-stdin
+        #    jf config use demo
+
+    - name: Build Maven Project
+      run: |
+        jf rt ping
+        jf  mvnc --repo-resolve-releases=$JFrog_Mvn_Repo --repo-resolve-snapshots=$JFrog_Mvn_Repo --repo-deploy-releases=$JFrog_Mvn_Repo --repo-deploy-snapshots=$JFrog_Mvn_Repo
+        jf  mvn clean install --build-name=$Build_name  --build-number=$GITHUB_RUN_NUMBER
+       
+    - name: Publish Build-Info to Supinfo Repo
+      run: |
+        jf rt bce $Build_name $GITHUB_RUN_NUMBER 
+        jf rt bag $Build_name $GITHUB_RUN_NUMBER 
+        jf rt bp $Build_name $GITHUB_RUN_NUMBER 
+
+  
