@@ -1,8 +1,8 @@
-name: "Supinfo Build Scan"
+name: "Mvn Build and Upload BuildInfo"
 
 on:
-  push:
-    branches: [ "main" ]
+  #push:
+    #branches: [ "main" ]
   #pull_request:
     #branches: [ "main" ]
   workflow_dispatch:
@@ -16,6 +16,7 @@ permissions:
 
 env:
   JFrog_Mvn_Repo: "demo-mvn-virtual"
+  JFrog_Docker_Repo: ""
   Build_name: "github-mvn-build"
   
 jobs:
