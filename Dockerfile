@@ -1,4 +1,4 @@
-FROM demo.jfrogchina.com/slash-docker-virtual/docker-framework:latest
+FROM azul/zulu-openjdk-alpine
 
 LABEL MAINTAINER="Alex Wang"
 
