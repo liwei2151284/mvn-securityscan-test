@@ -28,18 +28,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-     - name: Set up JDK 17
-       uses: actions/setup-java@v4
-       with:
-         distribution: temurin
-         java-version: '17'
-         cache: maven
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+        cache: maven
   
-     - name: Pin Maven to 3.9.11
-       run: |
-         curl -fsSL https://archive.apache.org/dist/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz -o /tmp/maven.tar.gz
-         sudo tar -xzf /tmp/maven.tar.gz -C /opt
-         echo "/opt/apache-maven-3.9.11/bin" >> $GITHUB_PATH
+    - name: Pin Maven to 3.9.11
+      run: |
+        curl -fsSL https://archive.apache.org/dist/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz -o /tmp/maven.tar.gz
+        sudo tar -xzf /tmp/maven.tar.gz -C /opt
+        echo "/opt/apache-maven-3.9.11/bin" >> $GITHUB_PATH
 
     - name: Setup JFrog CLI
       uses: jfrog/setup-jfrog-cli@v4
@@ -61,11 +61,11 @@ jobs:
         jf  mvnc --repo-resolve-releases=$JFrog_Mvn_Repo --repo-resolve-snapshots=$JFrog_Mvn_Repo --repo-deploy-releases=$JFrog_Mvn_Repo --repo-deploy-snapshots=$JFrog_Mvn_Repo
         jf  mvn clean install --build-name=$Build_name  --build-number=$GITHUB_RUN_NUMBER
 
-     - name: Build Docker Project and Push Docker image
-       run: |
-         docker build -t soleng.jfrog.io/demowei-docker-dev-local/mvn-securityscan-test:$GITHUB_RUN_NUMBER . 
-         jf docker push soleng.jfrog.io/demowei-docker-dev-local/mvn-securityscan-test:$GITHUB_RUN_NUMBER --build-name=$JOB_NAME --build-number=$GITHUB_RUN_NUMBER  --project=$JFrog_Project
-         jf docker scan soleng.jfrog.io/demowei-docker-dev-local/mvn-securityscan-test:$GITHUB_RUN_NUMBER --watches=docker-watch  --fail=false
+    - name: Build Docker Project and Push Docker image
+      run: |
+        docker build -t soleng.jfrog.io/demowei-docker-dev-local/mvn-securityscan-test:$GITHUB_RUN_NUMBER . 
+        jf docker push soleng.jfrog.io/demowei-docker-dev-local/mvn-securityscan-test:$GITHUB_RUN_NUMBER --build-name=$JOB_NAME --build-number=$GITHUB_RUN_NUMBER  --project=$JFrog_Project
+        jf docker scan soleng.jfrog.io/demowei-docker-dev-local/mvn-securityscan-test:$GITHUB_RUN_NUMBER --watches=docker-watch  --fail=false
        
     - name: Publish Build-Info to Supinfo Repo
       run: |
