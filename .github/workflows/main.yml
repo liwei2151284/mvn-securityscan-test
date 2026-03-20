@@ -1,4 +1,4 @@
-name: "Mvn Build and Upload BuildInfo"
+name: "Mvn Build"
 
 on:
   #push:
