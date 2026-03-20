@@ -24,8 +24,21 @@ jobs:
     #runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+  
+      - name: Pin Maven to 3.9.11
+        run: |
+          curl -fsSL https://archive.apache.org/dist/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz -o /tmp/maven.tar.gz
+          sudo tar -xzf /tmp/maven.tar.gz -C /opt
+          echo "/opt/apache-maven-3.9.11/bin" >> $GITHUB_PATH
 
-      - uses: jfrog/frogbot@5d9c42c30f1169d8be4ba5510b40e75ffcbbc2a9  # v2.21.2
+
+      - uses: jfrog/frogbot@2 # v2.21.2
         env:
           # [Mandatory if the two conditions below are met]
           # 1. The project uses npm, yarn 2, NuGet or .NET to download its dependencies
