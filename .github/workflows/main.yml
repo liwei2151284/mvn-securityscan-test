@@ -16,7 +16,7 @@ permissions:
 
 env:
   JFrog_Mvn_Repo: "demo-mvn-virtual"
-  JFrog_Docker_Repo: ""
+  JFrog_Docker_Repo: "weiapp-docker-dev-local"
   Build_name: "github-mvn-build"
   
 jobs:
@@ -63,8 +63,8 @@ jobs:
 
     - name: Build Docker Project and Push Docker image
       run: |
-        docker build -t soleng.jfrog.io/demowei-docker-dev-local/mvn-securityscan-test:$GITHUB_RUN_NUMBER . 
-        jf docker push soleng.jfrog.io/demowei-docker-dev-local/mvn-securityscan-test:$GITHUB_RUN_NUMBER --build-name=$GITHUB_RUN_NUMBER --build-number=$GITHUB_RUN_NUMBER  
+        docker build -t demo.jfrogchina.com/$JFrog_Docker_Repo/mvn-securityscan-test:$GITHUB_RUN_NUMBER . 
+        jf docker push demo.jfrogchina.com/$JFrog_Docker_Repo/mvn-securityscan-test:$GITHUB_RUN_NUMBER --build-name=$GITHUB_RUN_NUMBER --build-number=$GITHUB_RUN_NUMBER  
        
     - name: Publish Build-Info to Supinfo Repo
       run: |
