@@ -7,7 +7,7 @@ Install Maven 3 and JFrog CLI
 brew install maven
 
 # Install JFrog CLI
-brew install jfrog-cli
+brew install jfrog-cli 
 ```
    Otherwise, refer to the JFrog CLI documentation for other installation methods.
 
