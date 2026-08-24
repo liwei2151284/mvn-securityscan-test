@@ -1,54 +1,36 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# JFrog SAST performs 1st party source code security analysis
-# For more information, see
-# https://docs.jfrog-applications.jfrog.io/jfrog-security-features/sast
-
-name: "JFrog SAST Scan"
-
+name: "Frogbot v3 Scan Repository"
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
   schedule:
-    - cron: '23 4 * * 3'
+    # The repository will be scanned once a day at 00:00 GMT.
+    - cron: "0 0 * * *"
+  push:
+    branches:
+      - main
+permissions:
+  pull-requests: write
+  contents: write
+  security-events: write
+  # [Mandatory if using OIDC authentication protocol instead of JF_ACCESS_TOKEN]
+  # id-token: write
 
-env:
-  # [Mandatory]
-  # JFrog platform URL and access token for
-  # a JFrog platform instance with active
-  # JFrog Advanced Security subscription
-  JF_URL: ${{ secrets.JF_URL }}
-  JF_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
 jobs:
-  analyze:
-    name: Analyze
+  scan-repository:
     runs-on: ubuntu-latest
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
+    name: Scan Repository (${{ matrix.branch }} branch)
+    strategy:
+      matrix:
+        branch: [ "main" ]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-
-    - name: Install and configure JFrog CLI
-      run: |
-        npm install -g jfrog-cli-v2-jf
-        echo $JF_TOKEN | jf c add --interactive=false --url=$JF_URL --access-token-stdin
-
-    - name: Run JFrog SAST
-      run: |
-        jf audit --sast --format=sarif > jfrog_sast.sarif
-
-
-    - name: Upload output to generate autofix
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: jfrog_sast.sarif
+      - uses: jfrog/frogbot@v3
+        env:
+          JF_URL: ${{ secrets.JF_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+          JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
+        # with:
+          # oidc-provider-name: <OIDC_PROVIDER_NAME>
